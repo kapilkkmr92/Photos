@@ -79,7 +79,10 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
     private func storeSearchedResult() {
         guard let searchedText = searchTextField.text,!searchedText.isEmpty else { return }
         if !originalSearchResult.contains(searchedText) {
-            originalSearchResult.append(searchedText)
+            if originalSearchResult.count == 10 {
+                originalSearchResult.removeLast()
+            }
+            originalSearchResult.insert(searchedText, at: 0)
         }
     }
     

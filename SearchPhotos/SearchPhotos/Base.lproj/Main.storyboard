@@ -45,7 +45,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h1u-ph-B9V">
-                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="577"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -53,7 +53,7 @@
                         <constraints>
                             <constraint firstItem="h1u-ph-B9V" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="E0p-OF-Pi6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0HA-i0-zBn" secondAttribute="trailing" id="EzY-rC-TMl"/>
-                            <constraint firstItem="h1u-ph-B9V" firstAttribute="top" secondItem="0HA-i0-zBn" secondAttribute="bottom" constant="8" symbolic="YES" id="OrM-A8-eBr"/>
+                            <constraint firstItem="h1u-ph-B9V" firstAttribute="topMargin" secondItem="0HA-i0-zBn" secondAttribute="bottom" constant="4" id="OrM-A8-eBr"/>
                             <constraint firstItem="h1u-ph-B9V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Sza-l1-mnv"/>
                             <constraint firstItem="0HA-i0-zBn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dDP-m3-WJn"/>
                             <constraint firstItem="h1u-ph-B9V" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jn7-OO-1TI"/>
