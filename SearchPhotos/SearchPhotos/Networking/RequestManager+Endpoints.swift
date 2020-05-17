@@ -18,7 +18,7 @@ enum Endpoints {
         switch self {
         case .getImages:
             let queryWithSpace = query.replacingOccurrences(of: " ", with: "%20")
-            let urlString = Endpoints.baseUrl + Endpoints.apiKey + "&q\(queryWithSpace)" + Endpoints.path
+            let urlString = Endpoints.baseUrl + Endpoints.apiKey + "&q=\(queryWithSpace)" + Endpoints.path
             let url = URL(string: urlString)
             return URLRequest(url: url!)
         }

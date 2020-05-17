@@ -10,12 +10,48 @@ import UIKit
 
 class SearchViewController: UIViewController,CustomLoadingIndicator {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     private lazy var requestManager = RequestManager<ImagesModel>()
     var loadingIndicator: UIActivityIndicatorView?
+    var searchResult = [String]()
+    var originalSearchResult = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
+        searchTextField.addTarget(self, action: #selector(searchRecords(_ :)), for: .editingChanged)
         self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        searchResult.removeAll()
+        for result in originalSearchResult {
+            searchResult.append(result)
+        }
+        tableView.reloadData()
+    }
+    
+    @objc func searchRecords(_ textField: UITextField) {
+        self.searchResult.removeAll()
+        if textField.text?.count != 0 {
+            for country in originalSearchResult {
+                if let countryToSearch = textField.text{
+                    let range = country.lowercased().range(of: countryToSearch, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil {
+                        self.searchResult.append(country)
+                    }
+                }
+            }
+        } else {
+            for country in originalSearchResult {
+                searchResult.append(country)
+            }
+        }
+        tableView.reloadData()
     }
     
     func loadList(query: String) {
@@ -25,15 +61,25 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
             switch result {
             case .success(let imageData):
                 DispatchQueue.main.async {
+                    if let imageCount = imageData?.imageItems.count, imageCount > 0 {
+                        self?.storeSearchedResult()
+                    }
                     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyBoard.instantiateViewController(withIdentifier: "ImageListViewController") as! ImageListViewController
-//                    vc.listData = imageData?.images ?? []
+                    vc.listData = imageData?.imageItems ?? []
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             
             case .failed(let error,_):
                 print(error)
             }
+        }
+    }
+    
+    private func storeSearchedResult() {
+        guard let searchedText = searchTextField.text,!searchedText.isEmpty else { return }
+        if !originalSearchResult.contains(searchedText) {
+            originalSearchResult.append(searchedText)
         }
     }
     
@@ -52,6 +98,33 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
             showMessage(message: "Please enter something")
         }
     }
-    
 }
 
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        searchResult.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
+        cell.textLabel?.text = searchResult[indexPath.row]
+        return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.view.endEditing(true)
+        let selectedItem = searchResult[indexPath.row]
+        searchTextField.text = selectedItem
+        loadList(query: selectedItem)
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

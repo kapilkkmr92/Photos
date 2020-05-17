@@ -14,9 +14,13 @@ class ImageListTableViewCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var photoDescription: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
     override func prepareForReuse() {
           photoDescription.text = nil
           photoImageView.image = nil
     }
-    
 }

@@ -9,13 +9,14 @@
 import Foundation
 import UIKit
 
-
-
 struct ImagesModel: Codable {
     let total, totalHits: Int?
-    let images: [Item]?
+    let imageItems: [Item]
+    enum CodingKeys: String, CodingKey {
+        case total, totalHits
+        case imageItems = "hits"
+    }
 }
-
 
 class Item: Codable {
     let id: Int?
