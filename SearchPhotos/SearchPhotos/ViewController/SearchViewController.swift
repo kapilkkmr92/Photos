@@ -12,7 +12,7 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    private lazy var requestManager = RequestManager<ImagesModel>()
+    private lazy var requestManager = RequestManager<ImagesResponse>()
     var loadingIndicator: UIActivityIndicatorView?
     private var searchResult = [String]()
     private var originalSearchResult = [String]()
@@ -23,6 +23,7 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        searchTextField.becomeFirstResponder()
         searchResult.removeAll()
         for result in originalSearchResult {
             searchResult.append(result)
@@ -31,6 +32,7 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
     }
     
     private func setupUI() {
+        self.title = "Search Image"
         searchTextField.delegate = self
         tableView.dataSource = self
         tableView.delegate = self

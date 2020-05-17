@@ -13,7 +13,7 @@ class ImageDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var pageageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     private var frame: CGRect = CGRect(x:0, y:0, width:0, height:0)
-    var imagesData: [Item]?
+    var imagesData: [ImageDetail]?
     var selectedIndex: Int?
 
     override func viewDidLoad() {

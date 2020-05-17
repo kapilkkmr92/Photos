@@ -11,7 +11,7 @@ import UIKit
 class ImageListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var imagesData: [Item] = []
+    var imagesData: [ImageDetail] = []
     private let pendingOperations = PendingOperations()
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class ImageListViewController: UIViewController {
         self.tableView.register(UINib(nibName: "ImageListTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageListTableViewCell")
     }
     
-    private func startOperations(for photoRecord: Item, at indexPath: IndexPath) {
+    private func startOperations(for photoRecord: ImageDetail, at indexPath: IndexPath) {
       switch (photoRecord.state) {
       case .new:
         startDownload(for: photoRecord, at: indexPath)
@@ -37,7 +37,7 @@ class ImageListViewController: UIViewController {
       }
     }
     
-    private func startDownload(for photoRecord: Item, at indexPath: IndexPath) {
+    private func startDownload(for photoRecord: ImageDetail, at indexPath: IndexPath) {
       guard pendingOperations.downloadsInProgress[indexPath] == nil else {
         return
       }

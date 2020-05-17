@@ -23,9 +23,9 @@ class PendingOperations {
 }
 
 class ImageDownloader: Operation {
-  let photoRecord: Item
+    var photoRecord: ImageDetail
   
-  init(_ photoRecord: Item) {
+  init(_ photoRecord: ImageDetail) {
     self.photoRecord = photoRecord
   }
   
