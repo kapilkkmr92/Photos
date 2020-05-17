@@ -14,6 +14,7 @@
 		D65EF98C24715FD20077B43C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65EF98B24715FD20077B43C /* Assets.xcassets */; };
 		D65EF98F24715FD20077B43C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65EF98D24715FD20077B43C /* LaunchScreen.storyboard */; };
 		D65EF99A24715FD20077B43C /* SearchPhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF99924715FD20077B43C /* SearchPhotosTests.swift */; };
+		D65EF9A6247164DF0077B43C /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF9A5247164DF0077B43C /* RequestManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		D65EF99524715FD20077B43C /* SearchPhotosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchPhotosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65EF99924715FD20077B43C /* SearchPhotosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotosTests.swift; sourceTree = "<group>"; };
 		D65EF99B24715FD20077B43C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D65EF9A5247164DF0077B43C /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		D65EF98124715FCF0077B43C /* SearchPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				D65EF9A4247164C50077B43C /* Networking */,
 				D65EF98224715FCF0077B43C /* AppDelegate.swift */,
 				D65EF98424715FCF0077B43C /* SceneDelegate.swift */,
 				D65EF98624715FCF0077B43C /* ViewController.swift */,
@@ -97,6 +100,14 @@
 				D65EF99B24715FD20077B43C /* Info.plist */,
 			);
 			path = SearchPhotosTests;
+			sourceTree = "<group>";
+		};
+		D65EF9A4247164C50077B43C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D65EF9A5247164DF0077B43C /* RequestManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 				D65EF98724715FCF0077B43C /* ViewController.swift in Sources */,
 				D65EF98324715FCF0077B43C /* AppDelegate.swift in Sources */,
 				D65EF98524715FCF0077B43C /* SceneDelegate.swift in Sources */,
+				D65EF9A6247164DF0077B43C /* RequestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +384,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kapil.SearchPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -390,7 +402,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kapil.SearchPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
