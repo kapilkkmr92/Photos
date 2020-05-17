@@ -129,8 +129,8 @@
                         <viewLayoutGuide key="safeArea" id="lEr-Ox-pIT"/>
                     </view>
                     <connections>
-                        <outlet property="customPageIndicator" destination="YfY-1i-e9U" id="WEh-Wo-8eb"/>
-                        <outlet property="customScrollView" destination="GVC-Wn-dRj" id="4IY-wz-RF1"/>
+                        <outlet property="pageageControl" destination="YfY-1i-e9U" id="WEh-Wo-8eb"/>
+                        <outlet property="scrollView" destination="GVC-Wn-dRj" id="4IY-wz-RF1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xa-If-njI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

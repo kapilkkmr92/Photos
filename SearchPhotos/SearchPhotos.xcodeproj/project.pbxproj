@@ -99,21 +99,18 @@
 		D65EF98124715FCF0077B43C /* SearchPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				D65EF9BC2471BD950077B43C /* ViewController */,
+				D65EF9BB2471BD7F0077B43C /* CustomCell */,
 				D65EF9AE247176B50077B43C /* ImageDownloader */,
 				D65EF9AB247175CC0077B43C /* Model */,
 				D65EF9A4247164C50077B43C /* Networking */,
+				D65EF9BD2471BDA30077B43C /* Extensions */,
 				D65EF98224715FCF0077B43C /* AppDelegate.swift */,
 				D65EF98424715FCF0077B43C /* SceneDelegate.swift */,
-				D65EF98624715FCF0077B43C /* SearchViewController.swift */,
 				D65EF98824715FCF0077B43C /* Main.storyboard */,
 				D65EF98B24715FD20077B43C /* Assets.xcassets */,
 				D65EF98D24715FD20077B43C /* LaunchScreen.storyboard */,
 				D65EF99024715FD20077B43C /* Info.plist */,
-				D65EF9B124717C6E0077B43C /* ImageListViewController.swift */,
-				D65EF9B324717EDE0077B43C /* Extensions.swift */,
-				D65EF9B5247182D40077B43C /* ImageListTableViewCell.swift */,
-				D65EF9B6247182D40077B43C /* ImageListTableViewCell.xib */,
-				D65EF9B92471AA830077B43C /* ImageDetailViewController.swift */,
 			);
 			path = SearchPhotos;
 			sourceTree = "<group>";
@@ -151,6 +148,33 @@
 				D65EF9AF247177D20077B43C /* ImageDownloader.swift */,
 			);
 			path = ImageDownloader;
+			sourceTree = "<group>";
+		};
+		D65EF9BB2471BD7F0077B43C /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				D65EF9B5247182D40077B43C /* ImageListTableViewCell.swift */,
+				D65EF9B6247182D40077B43C /* ImageListTableViewCell.xib */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		D65EF9BC2471BD950077B43C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D65EF98624715FCF0077B43C /* SearchViewController.swift */,
+				D65EF9B124717C6E0077B43C /* ImageListViewController.swift */,
+				D65EF9B92471AA830077B43C /* ImageDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D65EF9BD2471BDA30077B43C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D65EF9B324717EDE0077B43C /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

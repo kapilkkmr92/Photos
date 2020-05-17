@@ -11,11 +11,15 @@ import UIKit
 class ImageListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var listData: [Item] = []
-    let pendingOperations = PendingOperations()
+    var imagesData: [Item] = []
+    private let pendingOperations = PendingOperations()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
+    }
+    
+    private func setupUI() {
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
@@ -24,7 +28,7 @@ class ImageListViewController: UIViewController {
         self.tableView.register(UINib(nibName: "ImageListTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageListTableViewCell")
     }
     
-    func startOperations(for photoRecord: Item, at indexPath: IndexPath) {
+    private func startOperations(for photoRecord: Item, at indexPath: IndexPath) {
       switch (photoRecord.state) {
       case .new:
         startDownload(for: photoRecord, at: indexPath)
@@ -33,7 +37,7 @@ class ImageListViewController: UIViewController {
       }
     }
     
-    func startDownload(for photoRecord: Item, at indexPath: IndexPath) {
+    private func startDownload(for photoRecord: Item, at indexPath: IndexPath) {
       guard pendingOperations.downloadsInProgress[indexPath] == nil else {
         return
       }
@@ -43,15 +47,12 @@ class ImageListViewController: UIViewController {
         if downloader.isCancelled {
           return
         }
-        
         DispatchQueue.main.async {
           self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
           self.tableView.reloadRows(at: [indexPath], with: .fade)
         }
       }
-      
       pendingOperations.downloadsInProgress[indexPath] = downloader
-      
       pendingOperations.downloadQueue.addOperation(downloader)
     }
     
@@ -63,48 +64,41 @@ class ImageListViewController: UIViewController {
       pendingOperations.downloadQueue.isSuspended = false
     }
     
-    func loadImagesForOnscreenCells() {
+    private func loadImagesForOnscreenCells() {
       if let pathsArray = tableView.indexPathsForVisibleRows {
         
         let allPendingOperations = Set(pendingOperations.downloadsInProgress.keys)
-        
         var toBeCancelled = allPendingOperations
         let visiblePaths = Set(pathsArray)
         toBeCancelled.subtract(visiblePaths)
         
-        
         var toBeStarted = visiblePaths
         toBeStarted.subtract(allPendingOperations)
-        
         
         for indexPath in toBeCancelled {
           if let pendingDownload = pendingOperations.downloadsInProgress[indexPath] {
             pendingDownload.cancel()
           }
-          
           pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
         }
         
         for indexPath in toBeStarted {
-          let recordToProcess = listData[indexPath.row]
+          let recordToProcess = imagesData[indexPath.row]
           startOperations(for: recordToProcess, at: indexPath)
         }
       }
     }
     
-    func showMessage(message: String) {
+    private func showMessage(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
               switch action.style{
               case .default:
                 self.navigationController?.popViewController(animated: true)
-
               case .cancel:
                     print("cancel")
-
               case .destructive:
                     print("destructive")
-
 
               @unknown default:
                 print("unknown")
@@ -116,22 +110,20 @@ class ImageListViewController: UIViewController {
 
 extension ImageListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if listData.count == 0 {
+        if imagesData.count == 0 {
             showMessage(message: "No result found")
         }
-        return listData.count
+        return imagesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ImageListTableViewCell", for: indexPath) as! ImageListTableViewCell
-        
         if cell.accessoryView == nil {
             let indicator = UIActivityIndicatorView(style: .medium)
             cell.accessoryView = indicator
         }
         let indicator = cell.accessoryView as! UIActivityIndicatorView
-        let photoDetails = listData[indexPath.row]
+        let photoDetails = imagesData[indexPath.row]
         cell.selectionStyle = .none
         cell.photoDescription.text = photoDetails.user
         cell.photoImageView.image = photoDetails.image
@@ -166,7 +158,7 @@ extension ImageListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "ImageDetailViewController") as! ImageDetailViewController
-        vc.photosUrls = listData.map({($0.largeImageURL ?? "")})
+        vc.imagesData = imagesData
         vc.selectedIndex = indexPath.row
         navigationController?.pushViewController(vc, animated: true)
     }

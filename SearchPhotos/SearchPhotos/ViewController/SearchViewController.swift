@@ -14,16 +14,11 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
     @IBOutlet weak var searchTextField: UITextField!
     private lazy var requestManager = RequestManager<ImagesModel>()
     var loadingIndicator: UIActivityIndicatorView?
-    var searchResult = [String]()
-    var originalSearchResult = [String]()
+    private var searchResult = [String]()
+    private var originalSearchResult = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchTextField.delegate = self
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.tableFooterView = UIView()
-        searchTextField.addTarget(self, action: #selector(searchRecords(_ :)), for: .editingChanged)
-        self.hideKeyboardWhenTappedAround()
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +28,15 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
             searchResult.append(result)
         }
         tableView.reloadData()
+    }
+    
+    private func setupUI() {
+        searchTextField.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
+        searchTextField.addTarget(self, action: #selector(searchRecords(_ :)), for: .editingChanged)
+        self.hideKeyboardWhenTappedAround()
     }
     
     @objc func searchRecords(_ textField: UITextField) {
@@ -54,7 +58,7 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
         tableView.reloadData()
     }
     
-    func loadList(query: String) {
+    private func loadList(query: String) {
         showLoadingIndicator()
         requestManager.getImagesWith(query: query) { [weak self] (result) in
             self?.hideLoadingIndicator()
@@ -66,7 +70,7 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
                     }
                     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyBoard.instantiateViewController(withIdentifier: "ImageListViewController") as! ImageListViewController
-                    vc.listData = imageData?.imageItems ?? []
+                    vc.imagesData = imageData?.imageItems ?? []
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             
@@ -86,9 +90,8 @@ class SearchViewController: UIViewController,CustomLoadingIndicator {
         }
     }
     
-    func showMessage(message: String) {
+    private func showMessage(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
-        
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

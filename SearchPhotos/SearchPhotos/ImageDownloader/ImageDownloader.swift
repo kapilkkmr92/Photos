@@ -35,7 +35,7 @@ class ImageDownloader: Operation {
       return
     }
     var imageData: Data?
-    if let url = URL(string: photoRecord.previewURL ?? "") {
+    if let url = URL(string: photoRecord.largeImageURL ?? "") {
         imageData = try? Data(contentsOf: url)
     }
     if isCancelled {
