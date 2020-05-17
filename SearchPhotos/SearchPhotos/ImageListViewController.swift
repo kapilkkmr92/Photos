@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ImageListViewController.swift
 //  SearchPhotos
 //
 //  Created by Kapil.kumar on 17/05/20.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ImageListViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
-
 }
-
