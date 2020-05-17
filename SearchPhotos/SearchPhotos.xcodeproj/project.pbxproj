@@ -15,6 +15,7 @@
 		D65EF98F24715FD20077B43C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65EF98D24715FD20077B43C /* LaunchScreen.storyboard */; };
 		D65EF99A24715FD20077B43C /* SearchPhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF99924715FD20077B43C /* SearchPhotosTests.swift */; };
 		D65EF9A6247164DF0077B43C /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF9A5247164DF0077B43C /* RequestManager.swift */; };
+		D65EF9A824716ACB0077B43C /* RequestManager+Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF9A724716ACB0077B43C /* RequestManager+Endpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		D65EF99924715FD20077B43C /* SearchPhotosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotosTests.swift; sourceTree = "<group>"; };
 		D65EF99B24715FD20077B43C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D65EF9A5247164DF0077B43C /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		D65EF9A724716ACB0077B43C /* RequestManager+Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestManager+Endpoints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D65EF9A5247164DF0077B43C /* RequestManager.swift */,
+				D65EF9A724716ACB0077B43C /* RequestManager+Endpoints.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				D65EF98324715FCF0077B43C /* AppDelegate.swift in Sources */,
 				D65EF98524715FCF0077B43C /* SceneDelegate.swift in Sources */,
 				D65EF9A6247164DF0077B43C /* RequestManager.swift in Sources */,
+				D65EF9A824716ACB0077B43C /* RequestManager+Endpoints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
