@@ -48,7 +48,7 @@ class SearchPhotosTests: XCTestCase {
                 if images?.imageItems.count == 0 {
                     errorExpectation.fulfill()
                 }
-            case .failed(let _,_):
+            case .failed( _,_):
                 break
             }
         }
