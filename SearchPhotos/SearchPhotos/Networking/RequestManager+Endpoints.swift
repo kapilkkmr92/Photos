@@ -14,7 +14,6 @@ enum Endpoints {
     private static let path = "&image_type=photo"
     
     case getImages
-    
     func getImagesWithQuery(query: String) -> URLRequest {
         switch self {
         case .getImages:
