@@ -14,13 +14,13 @@ enum Endpoints {
     private static let path = "&image_type=photo"
     
     case getImages
-    func getImagesWithQuery(query: String) -> URLRequest {
+    func getImagesWithQuery(query: String) -> URLRequest? {
         switch self {
         case .getImages:
             let queryWithSpace = query.replacingOccurrences(of: " ", with: "%20")
             let urlString = Endpoints.baseUrl + Endpoints.apiKey + "&q=\(queryWithSpace)" + Endpoints.path
-            let url = URL(string: urlString)
-            return URLRequest(url: url!)
+            guard let url = URL(string: urlString) else { return nil }
+            return URLRequest(url: url)
         }
     }
 }

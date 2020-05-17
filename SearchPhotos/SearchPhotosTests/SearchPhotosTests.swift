@@ -19,16 +19,42 @@ class SearchPhotosTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testGetImagesSuccessReturnsImages() {
+        let requestManager = RequestManager<ImagesResponse>()
+        let query = "cat"
+        let imagesExpectation = expectation(description: "images")
+        requestManager.getImagesWith(query: query) { (result) in
+            
+            switch result {
+            case .success:
+                imagesExpectation.fulfill()
+            case .failed(let error,_):
+                print(error)
+            }
+        }
+        waitForExpectations(timeout: 3) { (error) in
+            XCTAssertNotNil(imagesExpectation)
         }
     }
-
+    
+    func testImagesApiWhenNoDataReturns() {
+        let requestManager = RequestManager<ImagesResponse>()
+        let query = "kapil"
+        let errorExpectation = expectation(description: "No data")
+        requestManager.getImagesWith(query: query) { (result) in
+            
+            switch result {
+            case .success(let images):
+                if images?.imageItems.count == 0 {
+                    errorExpectation.fulfill()
+                }
+            case .failed(let _,_):
+                break
+            }
+        }
+        waitForExpectations(timeout: 3) { (error) in
+            XCTAssertNotNil(errorExpectation)
+        }
+    }
+    
 }
