@@ -163,6 +163,14 @@ extension ImageListViewController: UITableViewDataSource {
 
 extension ImageListViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ImageDetailViewController") as! ImageDetailViewController
+        vc.photosUrls = listData.map({($0.largeImageURL ?? "")})
+        vc.selectedIndex = indexPath.row
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
       suspendAllOperations()
     }

@@ -101,6 +101,42 @@
             </objects>
             <point key="canvasLocation" x="1740" y="136.28185907046478"/>
         </scene>
+        <!--Image Detail View Controller-->
+        <scene sceneID="Hkv-aI-t5d">
+            <objects>
+                <viewController storyboardIdentifier="ImageDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sT3-vN-b8G" customClass="ImageDetailViewController" customModule="SearchPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mnn-bS-eK0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVC-Wn-dRj">
+                                <rect key="frame" x="19" y="16" width="337.5" height="333.5"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="YfY-1i-e9U">
+                                <rect key="frame" x="19" y="357.5" width="337.5" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GVC-Wn-dRj" firstAttribute="centerX" secondItem="lEr-Ox-pIT" secondAttribute="centerX" id="0Kt-U4-gkb"/>
+                            <constraint firstItem="YfY-1i-e9U" firstAttribute="trailing" secondItem="GVC-Wn-dRj" secondAttribute="trailing" id="Mmb-y9-6Qg"/>
+                            <constraint firstItem="YfY-1i-e9U" firstAttribute="leading" secondItem="GVC-Wn-dRj" secondAttribute="leading" id="NFY-GA-GKj"/>
+                            <constraint firstItem="GVC-Wn-dRj" firstAttribute="width" secondItem="Mnn-bS-eK0" secondAttribute="width" multiplier="0.9" id="Yzi-LX-mjU"/>
+                            <constraint firstItem="YfY-1i-e9U" firstAttribute="top" secondItem="GVC-Wn-dRj" secondAttribute="bottom" constant="8" id="dwd-JQ-ltM"/>
+                            <constraint firstItem="GVC-Wn-dRj" firstAttribute="height" secondItem="Mnn-bS-eK0" secondAttribute="height" multiplier="0.5" id="l6t-aA-2rD"/>
+                            <constraint firstItem="GVC-Wn-dRj" firstAttribute="top" secondItem="lEr-Ox-pIT" secondAttribute="top" constant="16" id="p1R-1x-fcO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lEr-Ox-pIT"/>
+                    </view>
+                    <connections>
+                        <outlet property="customPageIndicator" destination="YfY-1i-e9U" id="WEh-Wo-8eb"/>
+                        <outlet property="customScrollView" destination="GVC-Wn-dRj" id="4IY-wz-RF1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0xa-If-njI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2468" y="133.5832083958021"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="yD8-DE-0U7">
             <objects>

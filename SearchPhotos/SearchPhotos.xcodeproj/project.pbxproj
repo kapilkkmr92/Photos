@@ -23,6 +23,7 @@
 		D65EF9B424717EDE0077B43C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF9B324717EDE0077B43C /* Extensions.swift */; };
 		D65EF9B7247182D40077B43C /* ImageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF9B5247182D40077B43C /* ImageListTableViewCell.swift */; };
 		D65EF9B8247182D40077B43C /* ImageListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65EF9B6247182D40077B43C /* ImageListTableViewCell.xib */; };
+		D65EF9BA2471AA830077B43C /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF9B92471AA830077B43C /* ImageDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		D65EF9B324717EDE0077B43C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D65EF9B5247182D40077B43C /* ImageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListTableViewCell.swift; sourceTree = "<group>"; };
 		D65EF9B6247182D40077B43C /* ImageListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageListTableViewCell.xib; sourceTree = "<group>"; };
+		D65EF9B92471AA830077B43C /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				D65EF9B324717EDE0077B43C /* Extensions.swift */,
 				D65EF9B5247182D40077B43C /* ImageListTableViewCell.swift */,
 				D65EF9B6247182D40077B43C /* ImageListTableViewCell.xib */,
+				D65EF9B92471AA830077B43C /* ImageDetailViewController.swift */,
 			);
 			path = SearchPhotos;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				D65EF98324715FCF0077B43C /* AppDelegate.swift in Sources */,
 				D65EF98524715FCF0077B43C /* SceneDelegate.swift in Sources */,
 				D65EF9B424717EDE0077B43C /* Extensions.swift in Sources */,
+				D65EF9BA2471AA830077B43C /* ImageDetailViewController.swift in Sources */,
 				D65EF9AA24716E1C0077B43C /* RequestManager+Extensions.swift in Sources */,
 				D65EF9B224717C6E0077B43C /* ImageListViewController.swift in Sources */,
 				D65EF9A6247164DF0077B43C /* RequestManager.swift in Sources */,
